@@ -1,15 +1,19 @@
 name: Port Trigger Test
 
 on:
-  workflow_dispatch:
+ workflow_dispatch:
     inputs:
       message:
         description: "Message from Port"
         required: false
         default: "Hello from Port"
+      port_context:
+        description: "Context from Port (JSON string)"
+        required: false
 
 jobs:
-  run:
+   run:
     runs-on: ubuntu-latest
     steps:
       - run: echo "${{ github.event.inputs.message }}"
+      - run: echo '${{ github.event.inputs.port_context }}'
