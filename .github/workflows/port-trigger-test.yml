@@ -1,6 +1,7 @@
 name: Port Trigger Test
 
 on:
+  workflow_dispatch:
  workflow_dispatch:
     inputs:
       message:
@@ -12,26 +13,8 @@ on:
         required: false
 
 jobs:
+  run:
    run:
     runs-on: ubuntu-latest
     steps:
       - run: echo "${{ github.event.inputs.message }}"
-      - run: echo '${{ github.event.inputs.port_context }}'
-
-      - name: Report SUCCESS back to Port
-        if: success()
-        run: |
-          curl -sS -X PATCH \
-            -H "Authorization: Bearer ${{ secrets.PORT_API_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            "https://api.getport.io/v1/actions/runs/${{ steps.portctx.outputs.runId }}" \
-            -d '{"status":"SUCCESS","message":"Workflow completed successfully"}'
-
-      - name: Report FAILURE back to Port
-        if: failure()
-        run: |
-          curl -sS -X PATCH \
-            -H "Authorization: Bearer ${{ secrets.PORT_API_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            "https://api.getport.io/v1/actions/runs/${{ steps.portctx.outputs.runId }}" \
-            -d '{"status":"FAILURE","message":"Workflow failed"}'
