@@ -5,7 +5,7 @@
     lifecycle: active
     documentation_url: https://resume.damianch.com/
     language: python
-    tier: "1"
+    tier: "critical"
     description: Handles all payment processing transactions
   relations:
     owning_team: platform_team
