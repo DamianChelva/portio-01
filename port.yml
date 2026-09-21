@@ -4,7 +4,7 @@
   properties:
     lifecycle: active
     documentation_url: https://resume.damianch.com/
-    language: Python
+    language: python
     tier: "1"
     description: Handles all payment processing transactions
   relations:
