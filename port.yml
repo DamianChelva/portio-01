@@ -2,7 +2,7 @@
   title: Payment Service
   blueprint: service
   properties:
-    lifecycle: active
+    lifecycle: deprecated
     documentation_url: https://resume.damianch.com/
     language: python
     tier: "critical"
